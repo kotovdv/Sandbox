@@ -1,6 +1,7 @@
 package com.kotovdv.sandbox.jmm
 
 import com.kotovdv.sandbox.exceptions.jmm.NoListenerAssociatedException
+import net.jcip.annotations.NotThreadSafe
 import java.io.OutputStream
 import java.lang.management.ManagementFactory.getGarbageCollectorMXBeans
 import java.util.concurrent.ConcurrentHashMap
@@ -11,10 +12,11 @@ import javax.management.NotificationEmitter
 /**
  * Simple GC information logger example
  *
- *
  * @author Dmitriy Kotov
+ * @NotThreadSafe was not yet tested in multithreaded env
  */
 
+@NotThreadSafe
 object GCLogger {
 
     private val listeners: ConcurrentMap<OutputStream, GCListener> = ConcurrentHashMap()
