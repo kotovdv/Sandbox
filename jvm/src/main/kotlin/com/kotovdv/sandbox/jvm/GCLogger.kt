@@ -1,6 +1,6 @@
-package com.kotovdv.sandbox.jmm
+package com.kotovdv.sandbox.jvm
 
-import com.kotovdv.sandbox.exceptions.jmm.NoListenerAssociatedException
+import com.kotovdv.sandbox.exceptions.jvm.NoListenerAssociatedException
 import net.jcip.annotations.NotThreadSafe
 import java.io.OutputStream
 import java.lang.management.ManagementFactory.getGarbageCollectorMXBeans

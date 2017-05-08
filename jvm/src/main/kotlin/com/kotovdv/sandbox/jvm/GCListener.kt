@@ -1,4 +1,4 @@
-package com.kotovdv.sandbox.jmm
+package com.kotovdv.sandbox.jvm
 
 import com.sun.management.GarbageCollectionNotificationInfo
 import com.sun.management.GarbageCollectionNotificationInfo.GARBAGE_COLLECTION_NOTIFICATION

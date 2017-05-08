@@ -8,13 +8,13 @@
     <artifactId>bom</artifactId>
     <version>1.0</version>
     <modules>
-        <module>jmm</module>
+        <module>jvm</module>
     </modules>
 
     <packaging>pom</packaging>
 
     <properties>
-        <kotlin.version>1.1.1</kotlin.version>
+        <kotlin.version>1.1.2</kotlin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
