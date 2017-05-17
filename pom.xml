@@ -9,12 +9,13 @@
     <version>1.0</version>
     <modules>
         <module>jvm</module>
+        <module>multithreading</module>
     </modules>
 
     <packaging>pom</packaging>
 
     <properties>
-        <kotlin.version>1.1.2</kotlin.version>
+        <kotlin.version>1.1.2-2</kotlin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -63,6 +64,21 @@
                 <groupId>net.jcip</groupId>
                 <artifactId>jcip-annotations</artifactId>
                 <version>1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.12</version>
+            </dependency>
+            <dependency>
+                <groupId>com.tngtech.java</groupId>
+                <artifactId>junit-dataprovider</artifactId>
+                <version>1.12.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>3.7.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
