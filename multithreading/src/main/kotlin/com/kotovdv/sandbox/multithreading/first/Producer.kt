@@ -1,9 +1,10 @@
 package com.kotovdv.sandbox.multithreading.first
 
+import com.kotovdv.sandbox.multithreading.first.collection.storage.Storage
 import java.lang.Thread.interrupted
 import java.lang.Thread.sleep
 
-class Producer(val elementsQueue: java.util.concurrent.BlockingQueue<Int>) : Runnable {
+class Producer(val elementsQueue: Storage<Int>) : Runnable {
     override fun run() {
         while (!interrupted()) {
             val generateValue = generateValue()
