@@ -4,7 +4,6 @@ import java.lang.Thread.interrupted
 import java.lang.Thread.sleep
 
 class Producer(val elementsQueue: java.util.concurrent.BlockingQueue<Int>) : Runnable {
-
     override fun run() {
         while (!interrupted()) {
             val generateValue = generateValue()

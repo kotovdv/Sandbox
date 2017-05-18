@@ -1,6 +1,6 @@
 package com.kotovdv.sandbox.multithreading.first.collection
 
-import java.util.*
+import java.util.Arrays.copyOf
 
 /**
  * Set of integers that keep elements in a sorted order
@@ -17,12 +17,18 @@ class BinarySortedIntSet(capacity: Int = 10) : SortedIntSet {
     override fun put(value: Int) {
         checkStorageCapacity()
         val position = findPosition(value, 0, size - 1)
+        if (position != null) {
+            insertValue(position, value)
+        }
+    }
+
+    private fun insertValue(position: Int, value: Int) {
         storage.insertAt(position, value)
         size++
     }
 
     override fun toArray(): Array<Int> {
-        return Arrays.copyOf(storage, size)
+        return copyOf(storage, size)
     }
 
     private fun checkStorageCapacity() {
@@ -37,7 +43,7 @@ class BinarySortedIntSet(capacity: Int = 10) : SortedIntSet {
         storage = newStorage
     }
 
-    private fun findPosition(value: Int, startPosition: Int, endPosition: Int): Int {
+    private fun findPosition(value: Int, startPosition: Int, endPosition: Int): Int? {
         if (endPosition - startPosition < 0) {
             return startPosition
         }
@@ -46,7 +52,7 @@ class BinarySortedIntSet(capacity: Int = 10) : SortedIntSet {
         val centerValue = storage[center]!!
 
         if (centerValue == value) {
-            return center
+            return null
         } else if (centerValue > value) {
             return findPosition(value, startPosition, center - 1)
         } else {

@@ -8,10 +8,9 @@ import java.util.concurrent.TimeUnit
 
 fun main(args: Array<String>) {
     val blockingQueue = ArrayBlockingQueue<Int>(50)
-
     val threadPool = Executors.newFixedThreadPool(10)
-
     val set = SynchronizedSortedIntSet(BinarySortedIntSet())
+
     for (i in 0 until 5) {
         threadPool.submit(Producer(blockingQueue))
         threadPool.submit(Consumer(set, blockingQueue))

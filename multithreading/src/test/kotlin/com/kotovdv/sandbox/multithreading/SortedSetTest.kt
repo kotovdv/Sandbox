@@ -19,6 +19,7 @@ class SortedSetTest {
         fun scenarios(): Array<Array<out Any>> {
             return arrayOf(
                     arrayOf(arrayOf(3, 5, 7), arrayOf(3, 5, 7)),
+                    arrayOf(arrayOf(3, 3, 5, 5, 7, 7), arrayOf(3, 5, 7)),
                     arrayOf(arrayOf(7, 5, 3), arrayOf(3, 5, 7)),
                     arrayOf(arrayOf(7, 5, 3, 2, 1, 0), arrayOf(0, 1, 2, 3, 5, 7)),
                     arrayOf(arrayOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9), arrayOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)),
@@ -44,15 +45,22 @@ class SortedSetTest {
 
         fun createRandomScenario(): Pair<Array<Int>, Array<Int>> {
             val size = random(5, 25)
-
-            val initialArray = arrayOfNulls<Int>(size)
+            val array = arrayOfNulls<Int>(size)
 
             for (i in 0 until size) {
-                initialArray[i] = random(Integer.MIN_VALUE, Integer.MAX_VALUE)
+                array[i] = random(Integer.MIN_VALUE, Integer.MAX_VALUE)
             }
 
-            val initialArrayNonNull = initialArray.requireNoNulls()
-            return Pair(initialArrayNonNull, initialArrayNonNull.sortedArray())
+            val initialScenario = array.requireNoNulls()
+
+            return Pair(initialScenario, createSortedSetArray(initialScenario))
+        }
+
+        private fun createSortedSetArray(initialArrayNonNull: Array<Int>): Array<Int> {
+            val linkedHashSet = LinkedHashSet<Int>()
+            linkedHashSet += initialArrayNonNull
+
+            return linkedHashSet.toTypedArray().sortedArray()
         }
 
         private fun random(from: Int, to: Int) = ThreadLocalRandom.current().nextInt(from, to)
